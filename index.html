@@ -1,187 +1,246 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Malik Abdul Hadi Awan — UI/UX Designer</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap" rel="stylesheet"/>
-  <!-- Primary Meta Tags -->
-<title>Malik Abdul Hadi Awan – UI/UX Designer</title>
-<meta name="title" content="Malik Abdul Hadi Awan – UI/UX Designer">
-<meta name="description" content="Portfolio of Malik Abdul Hadi Awan, a Google-certified UX specialist. Explore modern UI/UX case studies and creative design solutions.">
-
-<!-- Open Graph / Facebook / WhatsApp -->
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://heymalik.site/">
-<meta property="og:title" content="Malik Abdul Hadi Awan – UI/UX Designer">
-<meta property="og:description" content="Google-certified UX Designer with 2+ years experience. Explore my projects and design process.">
-<meta property="og:image" content="https://heymalik.site/thumbnail.jpg"> <!-- Replace with your actual image URL -->
-
-<!-- Twitter (optional) -->
-<meta property="twitter:card" content="summary_large_image">
-<meta property="twitter:url" content="https://heymalik.site/">
-<meta property="twitter:title" content="Malik Abdul Hadi Awan – UI/UX Designer">
-<meta property="twitter:description" content="Creative UI/UX Designer with global experience. Discover my portfolio.">
-<meta property="twitter:image" content="https://heymalik.site/thumbnail.jpg">
-
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    body {
-      font-family: 'Inter', sans-serif;
-      background-color: #0e0e0e;
-      color: #ccc;
-      line-height: 1.6;
-    }
-    a {
-      color: #ff914d;
-      text-decoration: none;
-    }
-    header {
-      padding: 20px 60px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-bottom: 1px solid #222;
-      background: #121212;
-      position: sticky;
-      top: 0;
-      z-index: 999;
-    }
-    header h1 {
-      font-size: 1.5rem;
-      color: #ffffff;
-    }
-    nav a {
-      margin-left: 20px;
-      font-weight: 500;
-    }
-    .hero {
-      padding: 100px 60px 40px;
-      text-align: center;
-    }
-    .hero h2 {
-      color: #fff;
-      font-size: 2.8rem;
-      margin-bottom: 20px;
-    }
-    .hero p {
-      font-size: 1.2rem;
-      max-width: 700px;
-      margin: 0 auto;
-      color: #aaa;
-    }
-    .highlight {
-      color: #50fa7b;
-      font-weight: bold;
-    }
-    .section {
-      padding: 80px 60px;
-      border-top: 1px solid #222;
-    }
-    .section h3 {
-      font-size: 1.8rem;
-      margin-bottom: 20px;
-      color: #fff;
-    }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-      gap: 30px;
-    }
-    .card {
-      background: #1c1c1c;
-      padding: 20px;
-      border-radius: 16px;
-      border: 1px solid #2a2a2a;
-      transition: all 0.3s ease;
-    }
-    .card:hover {
-      transform: translateY(-5px);
-      border-color: #50fa7b;
-    }
-    .card img {
-      width: 100%;
-      border-radius: 12px;
-      margin-bottom: 15px;
-    }
-    .card h4 {
-      color: #fff;
-      margin-bottom: 8px;
-    }
-    footer {
-      padding: 40px 60px;
-      background-color: #121212;
-      text-align: center;
-      border-top: 1px solid #222;
-    }
-    footer p {
-      color: #555;
-      font-size: 0.9rem;
-    }
-    .quote {
-      font-style: italic;
-      color: #aaa;
-      margin-top: 10px;
-      font-size: 1rem;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Malik Abdul Hadi Awan | UI/UX & Visual Designer</title>
+    <meta name="description" content="Portfolio of Malik Abdul Hadi Awan, a results-driven UI/UX and Visual Designer with experience in creating user-centric digital interfaces.">
+    <meta name="keywords" content="UI/UX Designer, Visual Designer, Figma, Sketch, Adobe XD, Web Designer, Portfolio">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    
+    <link rel="stylesheet" href="style.css">
+    
+    <script src="script.js" defer></script>
 </head>
 <body>
 
-  <header>
-    
-    <h3> <img src="https://github.com/user-attachments/assets/30f1d8ad-98fa-432c-bf29-9af93dbc7b42" width="50" height="50" alt="favicon" /> Malik Abdul Hadi Awan </h3>
-    <nav>
-      <a href="#">Work</a>
-      <a href="#">About</a>
-      <a href="#">Contact</a>
-    </nav>
-  </header>
+    <header class="header">
+        <nav class="nav container">
+            <a href="#home" class="nav__logo">MAHA.</a>
+            <div class="nav__menu" id="nav-menu">
+                <ul class="nav__list">
+                    <li class="nav__item"><a href="#about" class="nav__link">About</a></li>
+                    <li class="nav__item"><a href="#skills" class="nav__link">Skills</a></li>
+                    <li class="nav__item"><a href="#portfolio" class="nav__link">Work</a></li>
+                    <li class="nav__item"><a href="#experience" class="nav__link">Experience</a></li>
+                    <li class="nav__item"><a href="#contact" class="nav__link">Contact</a></li>
+                </ul>
+                <div class="nav__close" id="nav-close"><i class='bx bx-x'></i></div>
+            </div>
+            <div class="nav__toggle" id="nav-toggle">
+                <i class='bx bx-grid-alt'></i>
+            </div>
+        </nav>
+    </header>
 
-  <section class="hero">
-    <h2>Hi👋, I’m <span class="highlight">Malik Abdul Hadi Awan</span></h2>
-    <p class="subtext">
-      A UI/UX Designer and Product Strategist with <strong>2+ years of experience</strong> crafting digital experiences for clients in <strong>50+ countries</strong>.
-    </p>
-    <p class="quote">"Design is the silent ambassador of your brand. If done right, you can be a king — if not, you’ll be a loser."</p>
-  </section>
+    <main class="main">
+        <section class="home section" id="home">
+            <div class="home__container container grid">
+                <div class="home__content">
+                    <span class="home__greeting">Hello, I'm</span>
+                    <h1 class="home__name">Malik Abdul Hadi Awan</h1>
+                    <h3 class="home__profession">UI/UX & Visual Designer</h3>
+                    <p class="home__description">
+                        I design user-centric digital interfaces that are intuitive, efficient, and enjoyable to use. With a proven track record of over 30 projects, I specialize in crafting scalable design systems for complex web applications.
+                    </p>
+                    <div class="home__buttons">
+                        <a href="#contact" class="button button--primary">Get in Touch</a>
+                        <a href="https://www.behance.net/malikabdulhadi" target="_blank" class="button button--ghost">View Portfolio <i class='bx bx-right-arrow-alt'></i></a>
+                    </div>
+                </div>
+                <div class="home__social">
+                    <a href="https://www.linkedin.com/in/malikabdulhadiawan/" target="_blank" class="home__social-link"><i class='bx bxl-linkedin-square'></i></a>
+                    <a href="https://www.behance.net/malikabdulhadi" target="_blank" class="home__social-link"><i class='bx bxl-behance'></i></a>
+                    <a href="mailto:malikhaddiawan@gmail.com" class="home__social-link"><i class='bx bxs-envelope'></i></a>
+                </div>
+            </div>
+        </section>
 
-  <section class="section">
-    <h3>My Work</h3>
-    <div class="grid">
-      <div class="card">
-        <img src="https://images.unsplash.com/photo-1621111848501-8d3634f82336?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fFVJJTIwVVh8ZW58MHx8MHx8fDA%3D" alt="Wireframe"/>
-        <h4>Finance App Wireframes</h4>
-        <p>Low-fidelity wireframes for an app used by 200k+ users globally.</p>
-      </div>
-      <div class="card">
-        <img src="https://images.unsplash.com/photo-1621111848501-8d3634f82336?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fFVJJTIwVVh8ZW58MHx8MHx8fDA%3D" alt="UI Design"/>
-        <h4>Healthcare Dashboard UI</h4>
-        <p>High-impact visuals for doctors and patients in one intuitive interface.</p>
-      </div>
-      <div class="card">
-        <img src="https://images.unsplash.com/photo-1621111848501-8d3634f82336?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fFVJJTIwVVh8ZW58MHx8MHx8fDA%3D" alt="Prototype"/>
-        <h4>E-Commerce Prototype</h4>
-        <p>End-to-end flows designed and tested using interactive Figma components.</p>
-      </div>
-    </div>
-  </section>
+        <section class="about section" id="about">
+            <div class="container">
+                <span class="section__subtitle">My Intro</span>
+                <h2 class="section__title">About Me</h2>
+                <div class="about__container grid">
+                    <div class="about__data">
+                        <p class="about__description">
+                            Results-driven visual designer with 2 years of experience designing for web and mobile. I bridge the gap between business goals, technical requirements, and user needs to deliver impactful design solutions. My expertise lies in dashboards, admin panels, and management systems, supported by a deep understanding of user-centered design, usability best practices, and creating maintainable design systems.
+                        </p>
+                        <div class="about__stats">
+                            <div><span class="about__stat-number">02+</span><span class="about__stat-text">Years of<br>Experience</span></div>
+                            <div><span class="about__stat-number">30+</span><span class="about__stat-text">Projects<br>Completed</span></div>
+                            <div><span class="about__stat-number">07</span><span class="about__stat-text">Industry<br>Certifications</span></div>
+                        </div>
+                    </div>
+                     <div class="about__image-container">
+                        <img src="https://placehold.co/500x500/1E1E2E/FFFFFF?text=MAHA" alt="Malik Abdul Hadi Awan" class="about__img">
+                    </div>
+                </div>
+            </div>
+        </section>
 
-  <section class="section">
-    <h3>Why Work With Me?</h3>
-    <p style="max-width: 700px; color: #bbb; font-size: 1.1rem;">
-      I believe in designs that communicate silently, flow intuitively, and convert efficiently. Every pixel, every interaction is intentional — refined through research, iteration, and strategy.
-    </p>
-  </section>
+        <section class="skills section" id="skills">
+            <div class="container">
+                <span class="section__subtitle">My Abilities</span>
+                <h2 class="section__title">Professional Skills</h2>
+                <div class="skills__container grid">
+                    <div class="skills__card">
+                        <h3 class="skills__title">UI/UX Design</h3>
+                        <div class="skills__tags">
+                            <span>User-Centered Design</span><span>Wireframing</span><span>Prototyping</span><span>User Flows</span><span>Usability Testing</span><span>UX Audits</span>
+                        </div>
+                    </div>
+                    <div class="skills__card">
+                        <h3 class="skills__title">Visual Design</h3>
+                        <div class="skills__tags">
+                            <span>Typography</span><span>Color Theory</span><span>Layout Design</span><span>Branding</span><span>Design Systems</span><span>Material UI</span>
+                        </div>
+                    </div>
+                    <div class="skills__card">
+                        <h3 class="skills__title">Design Tools</h3>
+                        <div class="skills__tags">
+                            <span>Figma</span><span>Sketch</span><span>Adobe XD</span><span>Photoshop</span><span>Illustrator</span>
+                        </div>
+                    </div>
+                    <div class="skills__card">
+                        <h3 class="skills__title">Web & Development</h3>
+                        <div class="skills__tags">
+                            <span>Responsive Design</span><span>Accessibility</span><span>HTML</span><span>CSS</span><span>WordPress</span><span>Elementor</span><span>Webflow</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-  <footer>
-    <p>© 2025 Malik Abdul Hadi Awan — All Rights Reserved</p>
-    <p class="quote">Crafted with Figma, refined with strategy, fueled by creativity.</p>
-  </footer>
+        <section class="portfolio section" id="portfolio">
+            <div class="container">
+                <span class="section__subtitle">My Recent Work</span>
+                <h2 class="section__title">Featured Projects</h2>
+                <div class="portfolio__container grid">
+                    <div class="portfolio__card">
+                        <img src="https://placehold.co/600x400/1E1E2E/00A7E1?text=Project+One" alt="Project One" class="portfolio__img">
+                        <div class="portfolio__data">
+                            <h3 class="portfolio__title">Enterprise Dashboard Redesign</h3>
+                            <p class="portfolio__description">A complete overhaul of a legacy financial dashboard, focusing on data visualization and user efficiency.</p>
+                            <a href="#" class="button button--small">View Case Study <i class='bx bx-right-arrow-alt'></i></a>
+                        </div>
+                    </div>
+                    <div class="portfolio__card">
+                        <img src="https://placehold.co/600x400/1E1E2E/00A7E1?text=Project+Two" alt="Project Two" class="portfolio__img">
+                        <div class="portfolio__data">
+                            <h3 class="portfolio__title">Mobile App for Task Management</h3>
+                            <p class="portfolio__description">Designed a cross-platform mobile app from wireframes to high-fidelity interactive prototypes.</p>
+                             <a href="#" class="button button--small">View Case Study <i class='bx bx-right-arrow-alt'></i></a>
+                        </div>
+                    </div>
+                    <div class="portfolio__card">
+                        <img src="https://placehold.co/600x400/1E1E2E/00A7E1?text=Project+Three" alt="Project Three" class="portfolio__img">
+                        <div class="portfolio__data">
+                            <h3 class="portfolio__title">Custom Design System</h3>
+                            <p class="portfolio__description">Built a scalable design system from scratch for a SaaS platform to ensure brand consistency and development speed.</p>
+                             <a href="#" class="button button--small">View Case Study <i class='bx bx-right-arrow-alt'></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="experience section" id="experience">
+            <div class="container">
+                <span class="section__subtitle">My Career Path</span>
+                <h2 class="section__title">Work Experience</h2>
+                <div class="experience__container">
+                    <div class="experience__item">
+                        <div class="experience__header">
+                            <h3 class="experience__title">UI/UX Designer @ TECHTIMIZE</h3>
+                            <span class="experience__date">04/2025 – Present</span>
+                        </div>
+                        <p class="experience__description">Designing and maintaining scalable custom design systems for enterprise web apps. Developing responsive UIs for dashboards and admin panels, collaborating with cross-functional teams and engaging in direct client communication.</p>
+                    </div>
+                    <div class="experience__item">
+                        <div class="experience__header">
+                            <h3 class="experience__title">UI/UX Designer @ Averps PTE LTD</h3>
+                            <span class="experience__date">10/2023 – 04/2025</span>
+                        </div>
+                        <p class="experience__description">Designed user-friendly website homepages and impactful landing pages. Conducted comprehensive UX Audits to enhance usability, accessibility, and user engagement across diverse websites.</p>
+                    </div>
+                     <div class="experience__item">
+                        <div class="experience__header">
+                            <h3 class="experience__title">UI/UX Designer @ GMITS TECH FFZ LTD</h3>
+                            <span class="experience__date">09/2022 – 12/2022</span>
+                        </div>
+                        <p class="experience__description">Developed versatile design solutions for both web and mobile interfaces. Applied graphic design skills to enhance visual elements, including custom design systems and 3D elements.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="certs section">
+            <div class="container">
+                <span class="section__subtitle">My Credentials</span>
+                <h2 class="section__title">Certifications</h2>
+                <div class="certs__container grid">
+                    <div class="certs__card">
+                        <img src="https://img.icons8.com/color/96/google-logo.png" alt="Google Logo" class="certs__logo">
+                        <h3 class="certs__title">Google UX Design Certificate</h3>
+                        <span class="certs__issuer">Coursera | August 2022</span>
+                    </div>
+                    <div class="certs__card">
+                        <img src="https://img.icons8.com/color/96/udemy.png" alt="Udemy Logo" class="certs__logo">
+                        <h3 class="certs__title">The Complete Sketch 5 Course</h3>
+                        <span class="certs__issuer">Udemy | August 2021</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="contact section" id="contact">
+            <div class="container">
+                <span class="section__subtitle">Let's Connect</span>
+                <h2 class="section__title">Contact Me</h2>
+                <div class="contact__container grid">
+                    <div class="contact__content">
+                        <h3 class="contact__title-alt">Have a project in mind?</h3>
+                        <p class="contact__description">I'm currently available for freelance opportunities and full-time roles. If you're looking for a dedicated designer to bring your ideas to life, let's talk.</p>
+                    </div>
+                    <div class="contact__info">
+                         <div class="contact__info-item">
+                            <i class='bx bxs-envelope contact__info-icon'></i>
+                            <div>
+                                <h4 class="contact__info-title">Email</h4>
+                                <a href="mailto:malikhaddiawan@gmail.com" class="contact__info-link">malikhaddiawan@gmail.com</a>
+                            </div>
+                        </div>
+                         <div class="contact__info-item">
+                            <i class='bx bxs-phone contact__info-icon'></i>
+                            <div>
+                                <h4 class="contact__info-title">Phone</h4>
+                                <a href="tel:+923170086119" class="contact__info-link">+92 317 0086119</a>
+                            </div>
+                        </div>
+                         <div class="contact__info-item">
+                            <i class='bx bxl-linkedin-square contact__info-icon'></i>
+                            <div>
+                                <h4 class="contact__info-title">LinkedIn</h4>
+                                <a href="https://www.linkedin.com/in/malikabdulhadiawan/" target="_blank" class="contact__info-link">in/malikabdulhadiawan</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <div class="footer__container container">
+            <p class="footer__copy">&copy; 2025 Malik Abdul Hadi Awan. All Rights Reserved.</p>
+        </div>
+    </footer>
 
 </body>
 </html>
