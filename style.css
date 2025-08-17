@@ -5,6 +5,7 @@
   --primary-color-alt: #008fbf;
   --bg-color: #121212; /* A true dark background */
   --bg-color-alt: #1E1E1E; /* For cards and surfaces */
+   --bg-color-alt1: #ffffff;
   --text-color: #E0E0E0; /* Off-white for readability */
   --text-color-light: #A0A0A0;
   --title-color: #FFFFFF;
@@ -374,6 +375,13 @@ img {
     border-radius: 1rem;
     border: 1px solid var(--border-color);
     transition: transform 0.3s, box-shadow 0.3s;
+}
+.skills__card1 {
+    background-color: var(--bg-color-alt1);
+    padding: 2rem;
+    border-radius: 1rem;
+    border: 1px solid var(--border-color);
+    transition: transform 0.6s, box-shadow 0.6s;
 }
 .skills__card:hover {
     transform: translateY(-5px);

@@ -1,0 +1,1152 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Malik Abdul Hadi Awan - UI/UX & Visual Designer</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- Custom CSS for Animations & Styling -->
+    <style>
+        /*
+        ==============================================
+        :ROOT & THEME VARIABLES
+        ==============================================
+        */
+        :root {
+            --color-primary: #91ff00; /* Gold */
+            --color-secondary: #ffae00; /* Orange Gold */
+            --color-background: #0a0a0a; /* Near Black */
+            --color-surface: #1a1a1a; /* Dark Gray */
+            --color-text: #e0e0e0; /* Light Gray */
+            --color-text-muted: #888888; /* Medium Gray */
+            --font-primary: 'Orbitron', sans-serif;
+            --font-secondary: 'Roboto', sans-serif;
+            --glow-color: hsl(91, 100%, 50%);
+            --cursor-color: #e0e0e0;
+            --cursor-outline-color: #55ff00;
+        }
+
+        /*
+        ==============================================
+        CUSTOM CURSOR
+        ==============================================
+        */
+        .custom-cursor {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 8px;
+            height: 8px;
+            background-color: var(--cursor-color);
+            border-radius: 50%;
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            transition: width 0.2s, height 0.2s, background-color 0.2s;
+            z-index: 10000;
+        }
+        .custom-cursor-outline {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 40px;
+            height: 40px;
+            border: 2px solid var(--cursor-outline-color);
+            border-radius: 50%;
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            transition: width 0.3s, height 0.3s, opacity 0.3s, transform 0.1s;
+            z-index: 10000;
+        }
+        .custom-cursor.hover {
+            width: 50px;
+            height: 50px;
+            background-color: rgba(132, 255, 0, 0.2);
+        }
+        .custom-cursor-outline.hover {
+            width: 60px;
+            height: 60px;
+            opacity: 0.5;
+        }
+
+        /*
+        ==============================================
+        BASE & BODY STYLES
+        ==============================================
+        */
+        body {
+            font-family: var(--font-secondary);
+            background-color: var(--color-background);
+            color: var(--color-text);
+            cursor: none; /* Hide default cursor */
+        }
+        a, button, [data-lucide], input, textarea {
+            cursor: none;
+        }
+        .font-orbitron {
+            font-family: var(--font-primary);
+        }
+
+        /*
+        ==============================================
+        HERO SECTION & CRIME TAPE ANIMATION
+        ==============================================
+        */
+        .hero-banner {
+            background-color: #ffffff;
+            color: var(--color-surface);
+            background-image:
+                linear-gradient(rgba(255,255,255,0.97), rgba(255,255,255,0.97)),
+                url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23e5e7eb' fill-opacity='0.2'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+        .crime-tape {
+            background-color: var(--color-primary);
+            color: #000000;
+            font-weight: 900;
+            text-transform: uppercase;
+            white-space: nowrap;
+            position: absolute;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            font-size: 1.25rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            border: 1px solid #000;
+            filter: url(#noise);
+        }
+        .tape-text {
+            animation: marquee 20s linear infinite;
+            display: inline-block;
+            padding-right: 2rem;
+        }
+        @keyframes marquee {
+            from { transform: translateX(0%); }
+            to { transform: translateX(-50%); }
+        }
+        .tape-1 {
+            top: 15%;
+            transform: rotate(-4deg) translateX(-10%);
+            width: 140%;
+            z-index: 1;
+            animation: slide-in-left 1s cubic-bezier(0.25, 1, 0.5, 1), sway-1 8s ease-in-out infinite alternate;
+        }
+        .tape-2 {
+            bottom: 15%;
+            transform: rotate(3deg) translateX(-10%);
+            width: 140%;
+            z-index: 1;
+            animation: slide-in-right 1s cubic-bezier(0.25, 1, 0.5, 1) 0.2s, sway-2 10s ease-in-out infinite alternate;
+        }
+        @keyframes slide-in-left {
+            from { transform: rotate(-4deg) translateX(-120%); }
+            to { transform: rotate(-4deg) translateX(-10%); }
+        }
+        @keyframes slide-in-right {
+            from { transform: rotate(3deg) translateX(120%); }
+            to { transform: rotate(3deg) translateX(-10%); }
+        }
+        @keyframes sway-1 {
+            from { transform: rotate(-4.5deg) translateX(-10%); }
+            to { transform: rotate(-3.5deg) translateX(-12%); }
+        }
+        @keyframes sway-2 {
+            from { transform: rotate(3.5deg) translateX(-10%); }
+            to { transform: rotate(2.5deg) translateX(-8%); }
+        }
+        .hero-name {
+            z-index: 2;
+            position: relative;
+        }
+        .hero-name h1 {
+            transition: text-shadow 0.4s ease, transform 0.4s ease;
+        }
+        .hero-name:hover h1 {
+            transform: skew(-5deg, -2deg) scale(1.05);
+            text-shadow: 0 0 10px var(--glow-color), 0 0 20px var(--glow-color), 0 0 40px var(--glow-color);
+        }
+        .typing-cursor {
+            display: inline-block;
+            width: 3px;
+            height: 1.5rem;
+            background-color: var(--color-surface);
+            animation: blink 1s infinite;
+        }
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        /*
+        ==============================================
+        GENERAL COMPONENT & ANIMATION STYLES
+        ==============================================
+        */
+        .section-title {
+            position: relative;
+            display: inline-block;
+            padding-bottom: 0.5rem;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fade-in-up 0.8s forwards;
+        }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+            transition: width 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .section-title.visible::after {
+            width: 100%;
+        }
+        .card {
+            background-color: var(--color-surface);
+            border: 1px solid #333;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-10px) scale(1.03);
+            box-shadow: 0 15px 35px rgba(255, 215, 0, 0.2);
+            border-color: var(--glow-color);
+        }
+        .card:hover .card-icon {
+            transform: scale(1.1) rotate(5deg);
+        }
+        .card-icon {
+            transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275), transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transition-delay: var(--delay, 0s);
+        }
+        .scroll-reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .cta-section {
+            background: linear-gradient(45deg, var(--color-primary), var(--color-secondary));
+        }
+        .timeline-line {
+            transform: scaleY(0);
+            transform-origin: top;
+            transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .timeline-line.visible {
+            transform: scaleY(1);
+        }
+        .timeline-dot {
+            transform: scale(0);
+            transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.5s;
+        }
+        .timeline-dot.visible {
+            transform: scale(1);
+        }
+        @keyframes fade-in-up {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /*
+        ==============================================
+        PROJECTS SECTION: FILTER & MODAL
+        ==============================================
+        */
+        .project-filter button {
+            transition: background-color 0.3s, color 0.3s, transform 0.2s;
+        }
+        .project-filter button.active {
+            background-color: var(--color-primary);
+            color: var(--color-background);
+            font-weight: bold;
+        }
+        .project-card {
+            transition: transform 0.4s, opacity 0.4s;
+        }
+        .project-card.hidden {
+            transform: scale(0.9);
+            opacity: 0;
+            pointer-events: none;
+            height: 0;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+        .project-card .overflow-hidden img {
+             transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .project-card:hover .overflow-hidden img {
+            transform: scale(1.1);
+        }
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            z-index: 100;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s ease;
+        }
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+        .modal-content {
+            background-color: var(--color-surface);
+            border: 1px solid var(--color-primary);
+            padding: 2rem;
+            border-radius: 1rem;
+            width: 90%;
+            max-width: 800px;
+            max-height: 90vh;
+            overflow-y: auto;
+            transform: scale(0.9) translateY(50px);
+            transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+            position: relative;
+        }
+        .modal-overlay.active .modal-content {
+            transform: scale(1) translateY(0);
+        }
+        .modal-close-btn {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            color: var(--color-text);
+            transition: color 0.3s, transform 0.3s;
+        }
+        .modal-close-btn:hover {
+            color: var(--color-primary);
+            transform: rotate(90deg);
+        }
+
+        /*
+        ==============================================
+        FORM STYLES
+        ==============================================
+        */
+        .form-input.invalid {
+            border-color: #ef4444; /* red-500 */
+            animation: shake 0.5s;
+        }
+        .form-input.valid {
+            border-color: #22c55e; /* green-500 */
+        }
+        .error-message {
+            color: #ef4444;
+            font-size: 0.875rem;
+            display: none;
+            height: 1.25rem;
+        }
+        .form-message {
+            padding: 1rem;
+            border-radius: 0.5rem;
+            margin-top: 1rem;
+            text-align: center;
+            display: none;
+        }
+        .form-message.success {
+            background-color: rgba(34, 197, 94, 0.2);
+            color: #22c55e;
+            border: 1px solid #22c55e;
+        }
+        .form-message.error {
+            background-color: rgba(239, 68, 68, 0.2);
+            color: #ef4444;
+            border: 1px solid #ef4444;
+        }
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
+        }
+    </style>
+</head>
+<body class="antialiased">
+    <!-- Custom Cursor Elements -->
+    <div class="custom-cursor"></div>
+    <div class="custom-cursor-outline"></div>
+
+    <!-- SVG Filters for texture -->
+    <svg style="position:absolute; width:0; height:0;">
+      <filter id="noise">
+        <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="4" stitchTiles="stitch"/>
+        <feColorMatrix type="saturate" values="0"/>
+        <feComposite operator="in" in2="SourceGraphic" result="monoNoise"/>
+        <feBlend in="SourceGraphic" in2="monoNoise" mode="multiply" />
+      </filter>
+    </svg>
+
+    <!-- Header -->
+    <header id="header" class="bg-black/80 backdrop-blur-sm fixed w-full top-0 z-50 transition-all duration-300">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="font-orbitron text-2xl font-bold text-white">MAHA.</a>
+            <div class="hidden md:flex space-x-8 items-center">
+                <a href="#about" class="text-gray-300 hover:text-yellow-400 transition-colors">About</a>
+                <a href="#skills" class="text-gray-300 hover:text-yellow-400 transition-colors">Skills</a>
+                <a href="#experience" class="text-gray-300 hover:text-yellow-400 transition-colors">Experience</a>
+                <a href="#projects" class="text-gray-300 hover:text-yellow-400 transition-colors">Projects</a>
+                <a href="#contact" class="text-gray-300 hover:text-yellow-400 transition-colors">Contact</a>
+                <a href="#contact" class="bg-yellow-400 text-black font-bold py-2 px-4 rounded-lg hover:bg-yellow-500 transition-all">Hire Me</a>
+            </div>
+            <button id="mobile-menu-btn" class="md:hidden text-white" aria-label="Open menu">
+                <i data-lucide="menu"></i>
+            </button>
+        </nav>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden">
+            <a href="#about" class="block py-2 px-6 text-gray-300 hover:bg-gray-800">About</a>
+            <a href="#skills" class="block py-2 px-6 text-gray-300 hover:bg-gray-800">Skills</a>
+            <a href="#experience" class="block py-2 px-6 text-gray-300 hover:bg-gray-800">Experience</a>
+            <a href="#projects" class="block py-2 px-6 text-gray-300 hover:bg-gray-800">Projects</a>
+            <a href="#contact" class="block py-2 px-6 text-gray-300 hover:bg-gray-800">Contact</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero-banner min-h-screen flex items-center justify-center overflow-hidden relative">
+            <div class="crime-tape tape-1">
+                <div class="tape-text">
+                    <span>Ui/Ux Design • App Design • Website Design • Design System • Wireframes • Prototype • Visual Design • Components • Mockups • </span>
+                    <span>Ui/Ux Design • App Design • Website Design • Design System • Wireframes • Prototype • Visual Design • Components • Mockups • </span>
+                    <span>Ui/Ux Design • App Design • Website Design • Design System • Wireframes • Prototype • Visual Design • Components • Mockups • </span>
+                    <span>Ui/Ux Design • App Design • Website Design • Design System • Wireframes • Prototype • Visual Design • Components • Mockups • </span>
+                </div>
+            </div>
+            <div class="text-center relative hero-name">
+                <h1 class="font-orbitron text-5xl md:text-7xl lg:text-9xl font-black tracking-tighter">
+                    MALIK ABDUL
+                </h1>
+                <h1 class="font-orbitron text-5xl md:text-7xl lg:text-9xl font-black tracking-tighter -mt-2 md:-mt-4">
+                    HADI AWAN
+                </h1>
+                <p id="hero-subtitle" class="font-orbitron text-lg md:text-2xl mt-4 tracking-widest h-8"></p>
+            </div>
+            <div class="crime-tape tape-2">
+                <div class="tape-text">
+                    <span>Ui/Ux Design • App Design • Website Design • Design System • Wireframes • Prototype • Visual Design • Components • Mockups • </span>
+                    <span>Ui/Ux Design • App Design • Website Design • Design System • Wireframes • Prototype • Visual Design • Components • Mockups • </span>
+                    <span>Ui/Ux Design • App Design • Website Design • Design System • Wireframes • Prototype • Visual Design • Components • Mockups • </span>
+                    <span>Ui/Ux Design • App Design • Website Design • Design System • Wireframes • Prototype • Visual Design • Components • Mockups • </span>
+                </div>
+            </div>
+            <div class="absolute bottom-10 animate-bounce">
+                <a href="#about"><i data-lucide="arrow-down-circle" class="w-10 h-10 text-black"></i></a>
+            </div>
+        </section>
+
+        <!-- About Me -->
+        <section id="about" class="py-20 lg:py-32">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="section-title font-orbitron text-4xl font-bold">About Me</h2>
+                </div>
+                <div class="flex flex-col md:flex-row items-center gap-12 scroll-reveal">
+                    <div class="md:w-1/3">
+                        <img src="https://github.com/user-attachments/assets/a6716af0-471f-403e-8622-a36cd8c84878" alt="Malik Abdul Hadi Awan" class="rounded-full border-4 border-yellow-400 shadow-lg w-64 h-64 md:w-full md:h-auto mx-auto transition-transform duration-500 hover:scale-105 hover:rotate-3">
+                    </div>
+                    <div class="md:w-2/3 text-center md:text-left">
+                        <p class="text-lg text-gray-300 mb-4 leading-relaxed scroll-reveal" style="--delay: 0.2s;">
+                            Results-driven visual designer with 2 years of experience designing user-centric digital interfaces for web and mobile platforms. Proven track record of delivering over 30 projects focused on dashboards, admin panels, and management systems across various industries.
+                        </p>
+                        <p class="text-lg text-gray-300 leading-relaxed scroll-reveal" style="--delay: 0.4s;">
+                            Skilled in creating and maintaining custom design systems, wireframes, user flows, mockups, and interactive prototypes. Certified UX Design Specialist with 7 recognized certifications, including the Google UX Design Certificate. Adept in user-centered design, responsive UI, usability best practices, and aligning design solutions with business and technical requirements.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills -->
+        <section id="skills" class="py-20 lg:py-32 bg-black">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="section-title font-orbitron text-4xl font-bold">My Arsenal</h2>
+                </div>
+                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-8">
+                    <div class="card p-6 flex flex-col items-center justify-center rounded-lg text-center scroll-reveal" style="--delay: 0.1s;">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/figma/figma-original.svg" class="h-16 w-16 mb-4 card-icon" alt="Figma"/>
+                        <h3 class="font-bold text-lg">Figma</h3>
+                    </div>
+                    <div class="card p-6 flex flex-col items-center justify-center rounded-lg text-center scroll-reveal" style="--delay: 0.2s;">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/sketch/sketch-original.svg" class="h-16 w-16 mb-4 card-icon" alt="Sketch"/>
+                        <h3 class="font-bold text-lg">Sketch</h3>
+                    </div>
+                    <div class="card p-6 flex flex-col items-center justify-center rounded-lg text-center scroll-reveal" style="--delay: 0.3s;">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/xd/xd-plain.svg" class="h-16 w-16 mb-4 card-icon" alt="Adobe XD"/>
+                        <h3 class="font-bold text-lg">Adobe XD</h3>
+                    </div>
+                    <div class="card p-6 flex flex-col items-center justify-center rounded-lg text-center scroll-reveal" style="--delay: 0.4s;">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/photoshop/photoshop-plain.svg" class="h-16 w-16 mb-4 card-icon" alt="Photoshop"/>
+                        <h3 class="font-bold text-lg">Photoshop</h3>
+                    </div>
+                    <div class="card p-6 flex flex-col items-center justify-center rounded-lg text-center scroll-reveal" style="--delay: 0.5s;">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/illustrator/illustrator-plain.svg" class="h-16 w-16 mb-4 card-icon" alt="Illustrator"/>
+                        <h3 class="font-bold text-lg">Illustrator</h3>
+                    </div>
+                    <div class="card p-6 flex flex-col items-center justify-center rounded-lg text-center scroll-reveal" style="--delay: 0.6s;">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg" class="h-16 w-16 mb-4 card-icon" alt="Tailwind CSS"/>
+                        <h3 class="font-bold text-lg">Tailwind CSS</h3>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience -->
+        <section id="experience" class="py-20 lg:py-32">
+             <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="section-title font-orbitron text-4xl font-bold">Career Journey</h2>
+                </div>
+                <div class="relative max-w-4xl mx-auto">
+                    <!-- Vertical line -->
+                    <div class="timeline-line hidden md:block absolute w-0.5 h-full bg-gray-700 top-0 left-1/2 -translate-x-1/2"></div>
+                    
+                    <!-- Experience Item 1 -->
+                    <div class="mb-8 flex justify-between md:justify-normal md:odd:flex-row-reverse items-center w-full">
+                        <div class="order-1 md:w-5/12"></div>
+                        <div class="timeline-dot z-20 flex items-center order-1 bg-yellow-400 shadow-xl w-8 h-8 rounded-full">
+                            <i data-lucide="briefcase" class="mx-auto font-semibold text-lg text-black w-5 h-5"></i>
+                        </div>
+                        <div class="order-1 card rounded-lg shadow-xl w-full md:w-5/12 px-6 py-4 scroll-reveal">
+                            <h3 class="font-bold text-yellow-400 text-xl">UI/UX Designer</h3>
+                            <p class="text-sm font-medium leading-snug tracking-wide text-gray-300">TECHTIMIZE <span class="text-gray-500">(Full-time, On-site)</span></p>
+                            <p class="text-sm text-gray-500">Apr 2024 – Present | Lahore, Pakistan</p>
+                            <ul class="list-disc list-inside text-gray-400 mt-2 text-sm">
+                               <li>Designed and maintained scalable custom design systems.</li>
+                               <li>Developed responsive UI/UX for dashboards and admin panels.</li>
+                               <li>Collaborated with developers, PMs, and QA teams.</li>
+                           </ul>
+                        </div>
+                    </div>
+
+                    <!-- Experience Item 2 -->
+                    <div class="mb-8 flex justify-between md:flex-row-reverse items-center w-full">
+                        <div class="order-1 md:w-5/12"></div>
+                        <div class="timeline-dot z-20 flex items-center order-1 bg-yellow-400 shadow-xl w-8 h-8 rounded-full">
+                            <i data-lucide="briefcase" class="mx-auto font-semibold text-lg text-black w-5 h-5"></i>
+                        </div>
+                        <div class="order-1 card rounded-lg shadow-xl w-full md:w-5/12 px-6 py-4 scroll-reveal">
+                            <h3 class="font-bold text-yellow-400 text-xl">UI/UX Designer</h3>
+                            <p class="text-sm font-medium leading-snug tracking-wide text-gray-300">AVERPS PTE LTD <span class="text-gray-500">(Full-time, Remote)</span></p>
+                            <p class="text-sm text-gray-500">Oct 2023 – Apr 2024 | Singapore</p>
+                            <ul class="list-disc list-inside text-gray-400 mt-2 text-sm">
+                               <li>Designed visually appealing website homepages.</li>
+                               <li>Created impactful landing pages to communicate brand messages.</li>
+                               <li>Conducted comprehensive UX Audits for diverse websites.</li>
+                           </ul>
+                        </div>
+                    </div>
+
+                    <!-- Experience Item 3 -->
+                    <div class="mb-8 flex justify-between md:justify-normal md:odd:flex-row-reverse items-center w-full">
+                        <div class="order-1 md:w-5/12"></div>
+                        <div class="timeline-dot z-20 flex items-center order-1 bg-yellow-400 shadow-xl w-8 h-8 rounded-full">
+                            <i data-lucide="briefcase" class="mx-auto font-semibold text-lg text-black w-5 h-5"></i>
+                        </div>
+                        <div class="order-1 card rounded-lg shadow-xl w-full md:w-5/12 px-6 py-4 scroll-reveal">
+                            <h3 class="font-bold text-yellow-400 text-xl">UI/UX Designer</h3>
+                            <p class="text-sm font-medium leading-snug tracking-wide text-gray-300">GMITS TECH FFZ LTD <span class="text-gray-500">(Part-time, Remote)</span></p>
+                            <p class="text-sm text-gray-500">Sep 2022 – Dec 2022 | Dubai, UAE</p>
+                            <ul class="list-disc list-inside text-gray-400 mt-2 text-sm">
+                               <li>Developed versatile design solutions for web and mobile.</li>
+                               <li>Applied graphic design skills for visual enhancements.</li>
+                               <li>Created custom design systems and 3D elements.</li>
+                           </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects -->
+        <section id="projects" class="py-20 lg:py-32 bg-black">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="section-title font-orbitron text-4xl font-bold">Featured Projects</h2>
+                </div>
+                <!-- Project Filter Buttons -->
+                <div class="flex justify-center space-x-2 md:space-x-4 mb-12 project-filter scroll-reveal">
+                    <button data-filter="all" class="px-4 py-2 rounded-lg border border-gray-600 active">All</button>
+                    <button data-filter="ui-ux" class="px-4 py-2 rounded-lg border border-gray-600">UI/UX</button>
+                    <button data-filter="web-app" class="px-4 py-2 rounded-lg border border-gray-600">Web App</button>
+                    <button data-filter="mobile" class="px-4 py-2 rounded-lg border border-gray-600">Mobile</button>
+                </div>
+                <!-- Project Grid -->
+                <div id="project-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Project cards will be injected here by JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Certifications & Volunteering -->
+        <section id="certifications" class="py-20 lg:py-32">
+            <div class="container mx-auto px-6">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+                    <div class="scroll-reveal" style="--delay: 0.1s;">
+                        <div class="text-center mb-12">
+                            <h2 class="section-title font-orbitron text-4xl font-bold">Certifications</h2>
+                        </div>
+                        <div class="space-y-8">
+                             <div class="card p-6 text-center">
+                                <i data-lucide="award" class="w-12 h-12 mx-auto text-yellow-400 mb-3 card-icon"></i>
+                                <h3 class="font-bold text-xl mb-1">Google UX Design</h3>
+                                <p class="text-gray-400">Coursera • August 2022</p>
+                            </div>
+                             <div class="card p-6 text-center">
+                                <i data-lucide="award" class="w-12 h-12 mx-auto text-yellow-400 mb-3 card-icon"></i>
+                                <h3 class="font-bold text-xl mb-1">The Complete Sketch 5 Course</h3>
+                                <p class="text-gray-400">Udemy • August 2021</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="scroll-reveal" style="--delay: 0.3s;">
+                        <div class="text-center mb-12">
+                            <h2 class="section-title font-orbitron text-4xl font-bold">Leadership</h2>
+                        </div>
+                        <div class="space-y-8">
+                             <div class="card p-6">
+                                <h3 class="font-bold text-xl text-yellow-400">UI/UX Head</h3>
+                                <p class="font-semibold text-gray-300">Google Developers Student’s Club, CUI</p>
+                                <p class="text-gray-400 mt-2 text-sm">Spearheaded UX strategies, directed design thinking initiatives, and ensured the seamless integration of user-centric principles across projects.</p>
+                            </div>
+                             <div class="card p-6">
+                                <h3 class="font-bold text-xl text-yellow-400">Campus Head</h3>
+                                <p class="font-semibold text-gray-300">METRIX TECH SUMMIT</p>
+                                <p class="text-gray-400 mt-2 text-sm">Directed a team of 50+ volunteers, spearheading participation in various initiatives aimed at fostering entrepreneurship and innovation in Khyber Pakhtunkhwa.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Education -->
+        <section id="education" class="py-20 lg:py-32 bg-black">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="section-title font-orbitron text-4xl font-bold">Education</h2>
+                </div>
+                 <div class="max-w-4xl mx-auto grid md:grid-cols-2 gap-8">
+                    <div class="card p-6 rounded-lg scroll-reveal" style="--delay: 0.1s;">
+                        <i data-lucide="graduation-cap" class="w-12 h-12 text-yellow-400 mb-3 card-icon"></i>
+                        <h3 class="text-xl font-bold text-yellow-400">Bachelor of Science in Computer Science</h3>
+                        <p class="font-semibold text-gray-300">Comsats University Islamabad</p>
+                        <p class="text-gray-400">Abbottabad, KPK, Pakistan</p>
+                    </div>
+                    <div class="card p-6 rounded-lg scroll-reveal" style="--delay: 0.3s;">
+                        <i data-lucide="school" class="w-12 h-12 text-yellow-400 mb-3 card-icon"></i>
+                        <h3 class="text-xl font-bold text-yellow-400">Faculty of Sciences in Pre-Engineering</h3>
+                        <p class="font-semibold text-gray-300">National College of Sciences</p>
+                        <p class="text-gray-400">Mansehra, KPK, Pakistan</p>
+                    </div>
+                 </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta-section py-20 text-center text-black">
+            <div class="container mx-auto px-6 scroll-reveal">
+                <h2 class="font-orbitron text-3xl md:text-4xl font-bold mb-4">Have a project in mind?</h2>
+                <p class="text-lg md:text-xl mb-8 max-w-2xl mx-auto">I'm available for full-time roles and freelance projects. Let's build something amazing together.</p>
+                <a href="#contact" class="bg-black text-white font-bold py-4 px-8 rounded-lg text-lg hover:bg-gray-800 transition-all transform hover:scale-105 inline-block">
+                    Let's Talk
+                </a>
+            </div>
+        </section>
+
+        <!-- Contact -->
+        <section id="contact" class="py-20 lg:py-32">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="section-title font-orbitron text-4xl font-bold">Get In Touch</h2>
+                </div>
+                <div class="max-w-2xl mx-auto">
+                    <div class="flex flex-col md:flex-row justify-center items-center gap-8 mb-12 text-center scroll-reveal">
+                        <a href="mailto:malikhaddiawan@gmail.com" class="flex items-center gap-2 text-lg hover:text-yellow-400 transition-colors">
+                            <i data-lucide="mail"></i>
+                            malikhaddiawan@gmail.com
+                        </a>
+                        <a href="tel:+923170086119" class="flex items-center gap-2 text-lg hover:text-yellow-400 transition-colors">
+                            <i data-lucide="phone"></i>
+                            +92 317 0086119
+                        </a>
+                    </div>
+                    <form id="contact-form" class="space-y-4 scroll-reveal" style="--delay: 0.2s;" novalidate>
+                        <div>
+                            <label for="name" class="sr-only">Name</label>
+                            <input type="text" name="name" id="name" placeholder="Your Name" required class="form-input w-full bg-gray-800 border border-gray-700 rounded-lg py-3 px-4 text-white focus:outline-none focus:ring-2 focus:ring-yellow-400 transition">
+                            <p class="error-message mt-1">Please enter your name.</p>
+                        </div>
+                        <div>
+                            <label for="email" class="sr-only">Email</label>
+                            <input type="email" name="email" id="email" placeholder="Your Email" required class="form-input w-full bg-gray-800 border border-gray-700 rounded-lg py-3 px-4 text-white focus:outline-none focus:ring-2 focus:ring-yellow-400 transition">
+                            <p class="error-message mt-1">Please enter a valid email address.</p>
+                        </div>
+                        <div>
+                            <label for="message" class="sr-only">Message</label>
+                            <textarea name="message" id="message" rows="5" placeholder="Your Message" required class="form-input w-full bg-gray-800 border border-gray-700 rounded-lg py-3 px-4 text-white focus:outline-none focus:ring-2 focus:ring-yellow-400 transition"></textarea>
+                            <p class="error-message mt-1">Please enter your message.</p>
+                        </div>
+                        <div class="text-center pt-2">
+                            <button type="submit" class="bg-yellow-400 text-black font-bold py-3 px-8 rounded-lg hover:bg-yellow-500 transition-all w-full md:w-auto">Send Message</button>
+                        </div>
+                    </form>
+                    <div id="form-status-message" class="form-message"></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-black py-8">
+        <div class="container mx-auto px-6 text-center text-gray-500">
+            <div class="flex justify-center space-x-6 mb-4">
+                <a href="#" class="hover:text-yellow-400" aria-label="LinkedIn"><i data-lucide="linkedin" class="w-6 h-6"></i></a>
+                <a href="#" class="hover:text-yellow-400" aria-label="Behance"><i data-lucide="behance" class="w-6 h-6"></i></a>
+                <a href="#" class="hover:text-yellow-400" aria-label="GitHub"><i data-lucide="github" class="w-6 h-6"></i></a>
+            </div>
+            <p>&copy; 2024 Malik Abdul Hadi Awan. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Project Modal -->
+    <div id="project-modal" class="modal-overlay">
+        <div id="modal-content" class="modal-content">
+            <!-- Modal content will be injected here by JavaScript -->
+        </div>
+    </div>
+
+
+    <script>
+    // Self-executing anonymous function to encapsulate script and avoid global scope pollution
+    (() => {
+        'use strict';
+
+        // =================================================================================
+        // DATA
+        // =================================================================================
+        
+        // Project data - easily updatable
+        const projects = [
+            {
+                id: 1,
+                title: 'SCI Spring College',
+                category: 'web-app',
+                image: 'Landing-2.png',
+                short_desc: 'A modern, responsive Kids School site with a custom CMS.',
+                case_study: {
+                    description: 'This project involved designing and developing a full-featured e-commerce platform from the ground up. The focus was on creating a seamless shopping experience, from product discovery to checkout. I conducted user research to inform the UX, created high-fidelity mockups in Figma, and developed a custom design system to ensure brand consistency.',
+                    technologies: ['Figma', 'React', 'Node.js', 'MongoDB', 'Stripe API'],
+                    live_link: 'https://www.behance.net/gallery/232073997/Modern-Gen-Z-Spring-School-Website'
+                }
+            },
+            {
+                id: 2,
+                title: 'Mobile Banking App',
+                category: 'mobile',
+                image: 'https://placehold.co/600x400/1a1a1a/ffae00?text=Project+Two',
+                short_desc: 'A secure and intuitive mobile app for personal finance.',
+                case_study: {
+                    description: 'The goal was to design a mobile banking app that felt secure, trustworthy, and easy to use. I focused on a clean UI, intuitive navigation, and clear data visualization for account balances and transactions. The project included wireframing, interactive prototyping, and usability testing with target users.',
+                    technologies: ['Sketch', 'Adobe XD', 'Swift (iOS)', 'Kotlin (Android)'],
+                    live_link: '#'
+                }
+            },
+            {
+                id: 3,
+                title: 'SaaS Dashboard UI/UX',
+                category: 'ui-ux',
+                image: 'https://placehold.co/600x400/1a1a1a/ffd700?text=Project+Three',
+                short_desc: 'A data visualization dashboard for a business intelligence tool.',
+                case_study: {
+                    description: 'I was tasked with a complete redesign of a complex SaaS dashboard. The primary challenge was to present a large amount of data in a way that was both digestible and actionable. I created a modular design system, developed a library of data visualization components, and improved the overall information architecture.',
+                    technologies: ['Figma', 'Design System', 'User Research', 'Data Visualization'],
+                    live_link: '#'
+                }
+            },
+            {
+                id: 4,
+                title: 'Photographer Portfolio',
+                category: 'web-app',
+                image: 'https://placehold.co/600x400/1a1a1a/ffae00?text=Project+Four',
+                short_desc: 'A personal portfolio for a professional photographer.',
+                case_study: {
+                    description: 'This was a visually-driven project to showcase the work of a professional photographer. The design is minimalist to let the photos shine. I implemented subtle animations, lazy loading for images to improve performance, and a simple-to-use content management system for the client to update their galleries.',
+                    technologies: ['Photoshop', 'Webflow', 'CMS', 'Lazy Loading'],
+                    live_link: '#'
+                }
+            },
+            {
+                id: 5,
+                title: 'Appointment Booking App',
+                category: 'web-app',
+                image: 'https://placehold.co/600x400/1a1a1a/ffd700?text=Project+Five',
+                short_desc: 'A web app for booking appointments and managing schedules.',
+                case_study: {
+                    description: 'This web application allows users to easily book appointments with service providers. I designed the entire user flow, from selecting a service and time to receiving a confirmation. The project included both the customer-facing interface and the admin panel for providers to manage their schedules.',
+                    technologies: ['Figma', 'Vue.js', 'Firebase', 'Tailwind CSS'],
+                    live_link: '#'
+                }
+            },
+            {
+                id: 6,
+                title: 'Fitness Tracker App UI',
+                category: 'mobile',
+                image: 'https://placehold.co/600x400/1a1a1a/ffae00?text=Project+Six',
+                short_desc: 'A sleek and motivating UI for a mobile fitness application.',
+                case_study: {
+                    description: 'The UI for this fitness app was designed to be motivating and engaging. I used a dark theme with vibrant accent colors to create a modern feel. Key features included progress tracking charts, achievement badges, and social sharing capabilities. The design process was heavily focused on creating positive user feedback loops.',
+                    technologies: ['Adobe XD', 'Illustrator', 'Prototyping', 'Gamification'],
+                    live_link: '#'
+                }
+            }
+        ];
+
+        // =================================================================================
+        // DOM ELEMENTS
+        // =================================================================================
+        const header = document.getElementById('header');
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const cursor = document.querySelector('.custom-cursor');
+        const cursorOutline = document.querySelector('.custom-cursor-outline');
+        const projectGrid = document.getElementById('project-grid');
+        const filterContainer = document.querySelector('.project-filter');
+        const projectModal = document.getElementById('project-modal');
+        const modalContent = document.getElementById('modal-content');
+        const contactForm = document.getElementById('contact-form');
+
+        // =================================================================================
+        // INITIALIZATION & EVENT LISTENERS
+        // =================================================================================
+        
+        // Run functions on document load
+        document.addEventListener('DOMContentLoaded', () => {
+            initTypingAnimation();
+            populateProjects();
+            lucide.createIcons(); // Re-initialize icons after dynamic content is added
+        });
+
+        // Initialize Lucide Icons on first load
+        lucide.createIcons();
+
+        // --- Custom Cursor Logic ---
+        if (!window.matchMedia("(pointer: coarse)").matches) {
+            window.addEventListener('mousemove', handleCursorMove);
+            const hoverElements = document.querySelectorAll('a, button, .card, .hero-name, input, textarea');
+            hoverElements.forEach(el => {
+                el.addEventListener('mouseover', () => handleCursorHover(true));
+                el.addEventListener('mouseout', () => handleCursorHover(false));
+            });
+        } else {
+            if(cursor) cursor.style.display = 'none';
+            if(cursorOutline) cursorOutline.style.display = 'none';
+        }
+
+        // --- Mobile Menu Toggle ---
+        if (mobileMenuBtn && mobileMenu) {
+            mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+        }
+
+        // --- Header Scroll Effect ---
+        if (header) {
+            window.addEventListener('scroll', handleHeaderScroll, { passive: true });
+        }
+
+        // --- Intersection Observer for Scroll Animations ---
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.scroll-reveal, .section-title, .timeline-line, .timeline-dot').forEach(el => observer.observe(el));
+
+        // --- Project Filtering ---
+        if (filterContainer) {
+            filterContainer.addEventListener('click', handleFilterClick);
+        }
+
+        // --- Contact Form Validation ---
+        if (contactForm) {
+            contactForm.addEventListener('submit', handleFormSubmit);
+        }
+
+        // =================================================================================
+        // FUNCTIONS
+        // =================================================================================
+        
+        /**
+         * Handles the movement of the custom cursor.
+         * @param {MouseEvent} e - The mouse move event.
+         */
+        function handleCursorMove(e) {
+            const { clientX: posX, clientY: posY } = e;
+            if(cursor) {
+                cursor.style.left = `${posX}px`;
+                cursor.style.top = `${posY}px`;
+            }
+            if(cursorOutline) {
+                cursorOutline.animate({
+                    left: `${posX}px`,
+                    top: `${posY}px`
+                }, { duration: 500, fill: "forwards" });
+            }
+        }
+
+        /**
+         * Toggles the hover state for the custom cursor.
+         * @param {boolean} isHovering - True if the cursor is over a hoverable element.
+         */
+        function handleCursorHover(isHovering) {
+            if (cursor && cursorOutline) {
+                cursor.classList.toggle('hover', isHovering);
+                cursorOutline.classList.toggle('hover', isHovering);
+            }
+        }
+
+        /**
+         * Toggles the visibility of the mobile navigation menu.
+         */
+        function toggleMobileMenu() {
+            mobileMenu.classList.toggle('hidden');
+        }
+
+        /**
+         * Adjusts the header style based on scroll position.
+         */
+        function handleHeaderScroll() {
+            header.classList.toggle('py-2', window.scrollY > 50);
+            header.classList.toggle('py-4', window.scrollY <= 50);
+        }
+
+        /**
+         * Initializes the typing animation for the hero subtitle.
+         */
+        function initTypingAnimation() {
+            const subtitleEl = document.getElementById('hero-subtitle');
+            if (!subtitleEl) return;
+            const text = "UI/UX & VISUAL DESIGNER";
+            let i = 0;
+            subtitleEl.innerHTML = "&nbsp;"; // Start with a non-breaking space to maintain height
+            
+            function type() {
+                if (i < text.length) {
+                    subtitleEl.innerHTML = text.substring(0, i + 1) + '<span class="typing-cursor"></span>';
+                    i++;
+                    setTimeout(type, 100);
+                } else {
+                    // Keep cursor blinking
+                    subtitleEl.querySelector('.typing-cursor').style.animation = 'blink 1s infinite';
+                }
+            }
+            setTimeout(type, 500); // Initial delay
+        }
+
+        /**
+         * Populates the project grid with project data.
+         */
+        function populateProjects() {
+            if (!projectGrid) return;
+            projectGrid.innerHTML = ''; // Clear existing projects
+            projects.forEach((project, index) => {
+                const projectCard = document.createElement('div');
+                projectCard.className = `card project-card rounded-lg overflow-hidden group scroll-reveal`;
+                projectCard.dataset.category = project.category;
+                projectCard.dataset.id = project.id;
+                projectCard.style.setProperty('--delay', `${(index % 3) * 0.1}s`);
+
+                projectCard.innerHTML = `
+                    <div class="overflow-hidden">
+                        <img src="${project.image}" alt="${project.title}" class="w-full h-48 object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">${project.title}</h3>
+                        <p class="text-gray-400 mb-4">${project.short_desc}</p>
+                        <a href="#" data-project-id="${project.id}" class="open-modal-btn font-bold text-yellow-400 hover:text-yellow-300">View Case Study &rarr;</a>
+                    </div>
+                `;
+                projectGrid.appendChild(projectCard);
+            });
+            // Add event listeners to new modal buttons
+            document.querySelectorAll('.open-modal-btn').forEach(btn => {
+                btn.addEventListener('click', openProjectModal);
+            });
+            // Re-observe new elements for scroll animations
+            document.querySelectorAll('.scroll-reveal').forEach(el => observer.observe(el));
+        }
+
+        /**
+         * Handles clicks on the project filter buttons.
+         * @param {MouseEvent} e - The click event.
+         */
+        function handleFilterClick(e) {
+            const target = e.target;
+            if (target.tagName !== 'BUTTON') return;
+
+            // Update active button style
+            filterContainer.querySelector('button.active').classList.remove('active');
+            target.classList.add('active');
+
+            const filter = target.dataset.filter;
+            const cards = projectGrid.querySelectorAll('.project-card');
+
+            cards.forEach(card => {
+                const isVisible = filter === 'all' || card.dataset.category === filter;
+                if (isVisible) {
+                    card.classList.remove('hidden');
+                } else {
+                    card.classList.add('hidden');
+                }
+            });
+        }
+
+        /**
+         * Opens the project modal with details for the selected project.
+         * @param {MouseEvent} e - The click event.
+         */
+        function openProjectModal(e) {
+            e.preventDefault();
+            const projectId = parseInt(e.target.dataset.projectId, 10);
+            const project = projects.find(p => p.id === projectId);
+
+            if (!project) return;
+
+            modalContent.innerHTML = `
+                <button id="modal-close-btn" class="modal-close-btn" aria-label="Close modal"><i data-lucide="x" class="w-8 h-8"></i></button>
+                <img src="${project.image}" alt="${project.title}" class="w-full h-64 object-cover rounded-lg mb-6">
+                <h2 class="text-3xl font-orbitron font-bold text-yellow-400 mb-4">${project.title}</h2>
+                <p class="text-gray-300 mb-6">${project.case_study.description}</p>
+                <h3 class="text-xl font-bold mb-3">Technologies Used:</h3>
+                <div class="flex flex-wrap gap-2 mb-6">
+                    ${project.case_study.technologies.map(tech => `<span class="bg-gray-700 text-yellow-400 px-3 py-1 rounded-full text-sm">${tech}</span>`).join('')}
+                </div>
+                <a href="${project.case_study.live_link}" target="_blank" rel="noopener noreferrer" class="bg-yellow-400 text-black font-bold py-3 px-6 rounded-lg hover:bg-yellow-500 transition-all inline-block">
+                    View Live Project
+                </a>
+            `;
+            lucide.createIcons(); // Re-initialize close icon
+            projectModal.classList.add('active');
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+
+            // Add event listeners for closing the modal
+            document.getElementById('modal-close-btn').addEventListener('click', closeProjectModal);
+            projectModal.addEventListener('click', (event) => {
+                if (event.target === projectModal) closeProjectModal();
+            });
+            document.addEventListener('keydown', handleEscKey);
+        }
+
+        /**
+         * Closes the project modal.
+         */
+        function closeProjectModal() {
+            projectModal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+            document.removeEventListener('keydown', handleEscKey);
+        }
+
+        /**
+         * Handles the Escape key press to close the modal.
+         * @param {KeyboardEvent} e - The keydown event.
+         */
+        function handleEscKey(e) {
+            if (e.key === 'Escape') {
+                closeProjectModal();
+            }
+        }
+
+        /**
+         * Handles the contact form submission and validation.
+         * @param {SubmitEvent} e - The form submission event.
+         */
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            const nameInput = document.getElementById('name');
+            const emailInput = document.getElementById('email');
+            const messageInput = document.getElementById('message');
+            const statusMessage = document.getElementById('form-status-message');
+
+            const isNameValid = validateField(nameInput);
+            const isEmailValid = validateField(emailInput);
+            const isMessageValid = validateField(messageInput);
+
+            if (isNameValid && isEmailValid && isMessageValid) {
+                // Simulate form submission
+                statusMessage.textContent = 'Sending...';
+                statusMessage.className = 'form-message success';
+                statusMessage.style.display = 'block';
+
+                setTimeout(() => {
+                    statusMessage.textContent = 'Thank you for your message! I will get back to you soon.';
+                    contactForm.reset();
+                    document.querySelectorAll('.form-input').forEach(input => {
+                        input.classList.remove('valid', 'invalid');
+                    });
+                }, 1500);
+
+            } else {
+                statusMessage.textContent = 'Please correct the errors before submitting.';
+                statusMessage.className = 'form-message error';
+                statusMessage.style.display = 'block';
+            }
+        }
+
+        /**
+         * Validates a single form field.
+         * @param {HTMLInputElement|HTMLTextAreaElement} input - The input field to validate.
+         * @returns {boolean} - True if the field is valid, false otherwise.
+         */
+        function validateField(input) {
+            const errorElement = input.nextElementSibling;
+            let isValid = false;
+
+            if (input.type === 'email') {
+                const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+                isValid = re.test(String(input.value).toLowerCase());
+            } else {
+                isValid = input.value.trim() !== '';
+            }
+
+            if (isValid) {
+                input.classList.remove('invalid');
+                input.classList.add('valid');
+                if (errorElement) errorElement.style.display = 'none';
+            } else {
+                input.classList.remove('valid');
+                input.classList.add('invalid');
+                if (errorElement) errorElement.style.display = 'block';
+            }
+            return isValid;
+        }
+
+    })();
+    </script>
+</body>
+</html>
